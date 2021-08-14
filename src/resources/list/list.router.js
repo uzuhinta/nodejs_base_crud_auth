@@ -1,11 +1,12 @@
 import { Router } from 'express';
+import listControllers from './list.controllers';
 const router = Router();
 
-const controllers = (req, res) => {
-  res.json({ hello: 'world' });
-};
-
-router.route('/').get(controllers).post(controllers);
-router.route('/:id').get(controllers).put(controllers).delete(controllers);
+router.route('/').get(listControllers.getMany).post(listControllers.createOne);
+router
+  .route('/:id')
+  .get(listControllers.getOne)
+  .put(listControllers.updateOne)
+  .delete(listControllers.removeOne);
 
 export default router;
