@@ -3,6 +3,6 @@ import options from '../config';
 
 export const connect = (url = options.dbUrl, opts = {}) => {
   return mongoose.connect(url, { ...opts, useNewUrlParser: true }, () => {
-    console.log('Connecting to db');
+    console.log('Connect to db successfully');
   });
 };
