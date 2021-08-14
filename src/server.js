@@ -4,6 +4,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import config from './config';
 import itemRouter from './resources/item/item.router';
+import listRouter from './resources/list/list.router';
+import userRouter from './resources/user/user.router';
 
 export const app = express();
 
@@ -14,7 +16,9 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
+app.use('/api/user', userRouter);
 app.use('/api/item', itemRouter);
+app.use('/api/list', listRouter);
 
 export const start = () => {
   app.listen(config.port, () => {
