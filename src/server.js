@@ -12,4 +12,10 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-export const start = () => {};
+app.get('/', (req, res) => res.send('Hello world'));
+
+export const start = () => {
+  app.listen(3000, () => {
+    console.log('Server is on 3000');
+  });
+};
